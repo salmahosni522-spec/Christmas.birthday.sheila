@@ -1,0 +1,243 @@
+‎<!DOCTYPE html>
+‎<html lang="en">
+‎<head>
+‎<meta charset="UTF-8">
+‎<title>Winter Scene</title>
+‎
+‎<style>
+‎  body {
+‎    margin: 0;
+‎    background: linear-gradient(#00111f, #00324a);
+‎    height: 100vh;
+‎    overflow-x: hidden;
+‎    font-family: Arial, sans-serif;
+‎    display: flex;
+‎    justify-content: center;
+‎    align-items: flex-end;
+‎    position: relative;
+‎  }
+‎
+‎  .banner {
+‎    position: absolute;
+‎    top: 20px;
+‎    font-size: 60px;
+‎    color: gold;
+‎    font-weight: 900;
+‎    text-shadow: 0 0 20px gold, 0 0 40px yellow;
+‎    animation: glow 2s infinite alternate;
+‎  }
+‎
+‎  @keyframes glow {
+‎    from { text-shadow: 0 0 10px gold; }
+‎    to { text-shadow: 0 0 40px yellow; }
+‎  }
+‎
+‎  .snow {
+‎    position: fixed;
+‎    top: 0;
+‎    left: 0;
+‎    width: 100%;
+‎    height: 100%;
+‎    pointer-events: none;
+‎    overflow: hidden;
+‎  }
+‎
+‎  .snow span {
+‎    position: absolute;
+‎    top: -10px;
+‎    width: 8px;
+‎    height: 8px;
+‎    background: white;
+‎    border-radius: 50%;
+‎    opacity: 0.9;
+‎    filter: blur(1px);
+‎    animation: fall linear infinite;
+‎  }
+‎
+‎  @keyframes fall {
+‎    from { transform: translateY(-10vh) translateX(0); }
+‎    to   { transform: translateY(110vh) translateX(30px); }
+‎  }
+‎
+‎  .tree {
+‎    width: 0;
+‎    height: 0;
+‎    border-left: 200px solid transparent;
+‎    border-right: 200px solid transparent;
+‎    border-bottom: 400px solid #0d7a33;
+‎    position: relative;
+‎    filter: drop-shadow(0 0 10px #0f0);
+‎    margin-top: 100px;
+‎  }
+‎  .tree::before {
+‎    content: "";
+‎    position: absolute;
+‎    top: 150px;
+‎    left: -150px;
+‎    border-left: 150px solid transparent;
+‎    border-right: 150px solid transparent;
+‎    border-bottom: 330px solid #0a5d28;
+‎  }
+‎  .tree::after {
+‎    content: "";
+‎    position: absolute;
+‎    top: 300px;
+‎    left: -120px;
+‎    border-left: 120px solid transparent;
+‎    border-right: 120px solid transparent;
+‎    border-bottom: 250px solid #08491f;
+‎  }
+‎
+‎  .star {
+‎    position: absolute;
+‎    top: -60px;
+‎    left: -30px;
+‎    width: 0;
+‎    height: 0;
+‎    border-right: 50px solid transparent;
+‎    border-bottom: 35px solid yellow;
+‎    border-left: 50px solid transparent;
+‎    transform: rotate(35deg);
+‎    filter: drop-shadow(0 0 10px yellow);
+‎    animation: twinkle 1s infinite alternate;
+‎  }
+‎  @keyframes twinkle {
+‎    from { filter: drop-shadow(0 0 5px yellow); }
+‎    to { filter: drop-shadow(0 0 30px gold); }
+‎  }
+‎
+‎  .light {
+‎    position: absolute;
+‎    width: 14px;
+‎    height: 14px;
+‎    border-radius: 50%;
+‎    animation: blink 1s infinite alternate;
+‎  }
+‎
+‎  @keyframes blink {
+‎    from { opacity: 0.2; }
+‎    to { opacity: 1; }
+‎  }
+‎
+‎  .gifts {
+‎    display: flex;
+‎    gap: 30px;
+‎    margin-top: 40px;
+‎  }
+‎  .gift {
+‎    width: 70px;
+‎    height: 70px;
+‎    background: red;
+‎    position: relative;
+‎    border-radius: 8px;
+‎    box-shadow: 0 0 10px #000;
+‎  }
+‎  .gift::before {
+‎    content:"";
+‎    position:absolute;
+‎    width:100%;
+‎    height:10px;
+‎    background:yellow;
+‎    top:30px;
+‎  }
+‎  .gift::after {
+‎    content:"";
+‎    position:absolute;
+‎    height:100%;
+‎    width:10px;
+‎    background:yellow;
+‎    left:30px;
+‎  }
+‎
+‎  .kids {
+‎    display: flex;
+‎    align-items: center;
+‎    gap: 30px;
+‎    margin-top: 60px;
+‎  }
+‎  .kid {
+‎    width: 80px;
+‎    height: 160px;
+‎    background: #ffe0bd;
+‎    border-radius: 20px;
+‎    position: relative;
+‎  }
+‎  .kid::before {
+‎    content:"";
+‎    position:absolute;
+‎    width:70px;
+‎    height:70px;
+‎    background:pink;
+‎    border-radius:50%;
+‎    top:-35px;
+‎    left:5px;
+‎  }
+‎  .kid.boy::before { background: lightblue; }
+‎
+‎  .hand {
+‎    position: absolute;
+‎    width: 22px;
+‎    height: 22px;
+‎    border-radius: 50%;
+‎    background:#ffe0bd;
+‎    top: 90px;
+‎  }
+‎  .kid.left .hand { right: -22px; }
+‎  .kid.right .hand { left: -22px; }
+‎
+‎</style>
+‎</head>
+‎
+‎<body>
+‎
+‎<div class="banner">HAPPY BIRTHDAY</div>
+‎
+‎<div class="snow" id="snow"></div>
+‎
+‎<div style="display:flex; flex-direction:column; align-items:center; margin-bottom:50px;">
+‎
+‎  <div class="tree">
+‎    <div class="star"></div>
+‎
+‎    <div class="light" style="top:120px; left:-40px; background:red;"></div>
+‎    <div class="light" style="top:170px; left:30px; background:yellow;"></div>
+‎    <div class="light" style="top:240px; left:-70px; background:blue;"></div>
+‎    <div class="light" style="top:300px; left:40px; background:pink;"></div>
+‎  </div>
+‎
+‎  <div class="gifts">
+‎    <div class="gift"></div>
+‎    <div class="gift" style="background:blue;"></div>
+‎    <div class="gift" style="background:purple;"></div>
+‎  </div>
+‎
+‎  <div class="kids">
+‎    <div class="kid left"><div class="hand"></div></div>
+‎    <div class="kid right boy"><div class="hand"></div></div>
+‎  </div>
+‎
+‎</div>
+‎
+‎<!-- Christmas Music -->
+‎<audio autoplay loop>
+‎  <source src="https://upload.wikimedia.org/wikipedia/commons/1/15/Jingle_Bells_instrumental.ogg" type="audio/ogg">
+‎</audio>
+‎
+‎<script>
+‎  const snow = document.getElementById("snow");
+‎
+‎  for (let i = 0; i < 150; i++) {
+‎    let s = document.createElement("span");
+‎    let size = Math.random() * 5 + 3;
+‎    s.style.width = size + "px";
+‎    s.style.height = size + "px";
+‎    s.style.left = Math.random() * 100 + "%";
+‎    s.style.animationDuration = Math.random() * 4 + 4 + "s";
+‎    s.style.animationDelay = Math.random() * 5 + "s";
+‎    snow.appendChild(s);
+‎  }
+‎</script>
+‎
+‎</body>
+‎</html>
+‎
